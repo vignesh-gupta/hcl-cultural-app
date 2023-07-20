@@ -7,25 +7,9 @@ export const navLinks: NavMenu[] = [
     type: "link",
   },
   {
-    name: "Trending Trips",
-    type: "category",
-    subCategory: [
-      {
-        name: "Test",
-        path: "/test",
-        type: "link",
-      },
-    ],
+    name: "Cultural Data",
+    path: "/",
+    type: "link",
   },
-  {
-    name: "Components",
-    type: "category",
-    subCategory: [
-      {
-        name: "Test",
-        path: "/test",
-        type: "link",
-      },
-    ],
-  },
+ 
 ];

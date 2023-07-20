@@ -16,32 +16,29 @@ import MobileNav from "./MobileNav";
 const Navbar = () => {
   return (
     <header className="flex items-center w-full h-16 gap-3 px-20 py-1 border-b-2">
-      <Link href="/">
-        HCl
-        {/* <Image
-          src={logo}
+      <Link href="/" className="grow">
+        {/* HCl */}
+        <Image
+          src={'/HCL-LOGO.png'}
           alt="logo"
           priority
-          className="object-contain w-32 h-12 "
+          width={400}
+          height={200}
+          className="object-contain w-48 "
           style={{ color: "#fff" }}
-        /> */}
+        />
       </Link>
 
       <div id="navLinks" className="hidden md:block ">
         <NavigationMenuBar />
       </div>
 
-      <div className="flex justify-end grow" >
-
-      <Button>Get Started</Button>
-      </div>
-
-      <div className="flex justify-end mr-2 md:hidden -order-1">
+      <div className="flex self-end mr-2 md:hidden">
         <Sheet>
           <SheetTrigger className="p-2 border-2 rounded-lg "><Menu /></SheetTrigger>
           <SheetContent className="block md:hidden">
             <SheetHeader>
-              <SheetTitle>Are you sure absolutely sure?</SheetTitle>
+              {/* <SheetTitle>Are you sure absolutely sure?</SheetTitle> */}
                 <MobileNav />
             </SheetHeader>
           </SheetContent>

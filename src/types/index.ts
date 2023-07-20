@@ -1,4 +1,4 @@
-export type NavMenu = (NavLink | NavCategory)
+export type NavMenu = NavLink | NavCategory
 
 type NavLink = {
     name: string;
