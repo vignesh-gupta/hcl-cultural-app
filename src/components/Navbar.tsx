@@ -15,7 +15,7 @@ import MobileNav from "./MobileNav";
 
 const Navbar = () => {
   return (
-    <header className="flex items-center w-full h-16 gap-3 px-20 py-1 border-b-2">
+    <header className="flex items-center h-16 min-w-full gap-3 px-10 py-1 border-b-2 sm:px-20">
       <Link href="/" className="grow">
         {/* HCl */}
         <Image
@@ -38,7 +38,6 @@ const Navbar = () => {
           <SheetTrigger className="p-2 border-2 rounded-lg "><Menu /></SheetTrigger>
           <SheetContent className="block md:hidden">
             <SheetHeader>
-              {/* <SheetTitle>Are you sure absolutely sure?</SheetTitle> */}
                 <MobileNav />
             </SheetHeader>
           </SheetContent>
