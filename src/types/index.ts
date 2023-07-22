@@ -11,3 +11,8 @@ type NavCategory =  {
     type: 'category';
     subCategory: NavLink[];
 }
+
+export type SurveyQuestion = {
+    question: string;
+    value:  "org" | "domain" | "role" | "experience" | "surveyQ1" | "surveyQ2" | "surveyQ3" | "surveyQ4" | "surveyQ5" | "surveyQ6";
+}

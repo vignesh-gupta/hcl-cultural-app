@@ -23,7 +23,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { domains } from "@/constants/mapingConstants";
+import { domains, surveyQuestions } from "@/constants/mapingConstants";
+import { Slider } from "./ui/slider";
+import RatingOptions from "./RatingOptions";
+import { SurveyQuestion } from "@/types";
 
 const SurveyForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,12 +40,12 @@ const SurveyForm = () => {
       // department: "",
       // region: "",
       // country: "",
-      // surveyQ1: "",
-      // surveyQ2: "",
-      // surveyQ3: "",
-      // surveyQ4: "",
-      // surveyQ5: "",
-      // surveyQ6: ",",
+      surveyQ1: "",
+      surveyQ2: "",
+      surveyQ3: "",
+      surveyQ4: "",
+      surveyQ5: "",
+      surveyQ6: "",
     },
   });
 
@@ -145,6 +148,33 @@ const SurveyForm = () => {
               </FormItem>
             )}
           />
+
+          {surveyQuestions.map((question: SurveyQuestion, i: number) => (
+            <FormField
+              key={i}
+              control={form.control}
+              name={question.value}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    {question.question}
+                  </FormLabel>
+                  <FormControl>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Domain" />
+                      </SelectTrigger>
+                      <RatingOptions />
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
           <Button type="submit">Submit</Button>
         </form>
       </Form>
