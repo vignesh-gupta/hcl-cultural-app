@@ -2,8 +2,17 @@ import { ApexOptions } from "apexcharts";
 
 export const  treeOptions: ApexOptions = {
   legend: {
-    show: false
+    show: true,
   },
+  plotOptions:{
+    treemap:{
+      enableShades:true,
+      dataLabels: {
+        format:  "truncate"
+     },
+    }
+  },
+
   chart: {
     type: 'treemap'
   },

@@ -25,7 +25,7 @@ export async function submitSurveyAction(values: z.infer<typeof formSchema>){
 export async function getSurveyAction(){
   return await prisma.survey.findMany({
     select:{
-      persona: true
+      domain: true
     }
   });
 }
