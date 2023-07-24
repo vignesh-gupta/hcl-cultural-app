@@ -19,6 +19,13 @@ export async function submitSurveyAction(values: z.infer<typeof formSchema>){
       domain: values.domain,
       experience: values.experience,
     },
+  }); 
+}
+
+export async function getSurveyAction(){
+  return await prisma.survey.findMany({
+    select:{
+      persona: true
+    }
   });
-  
 }

@@ -3,12 +3,12 @@ import { NavMenu, SurveyQuestion } from "@/types";
 export const navLinks: NavMenu[] = [
   {
     name: "Home",
-    path: "/",
+    path: "/survey",
     type: "link",
   },
   {
     name: "Cultural Data",
-    path: "/",
+    path: "/survey/result",
     type: "link",
   },
 ];
