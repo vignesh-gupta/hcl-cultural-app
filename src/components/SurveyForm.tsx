@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -24,33 +21,37 @@ import {
   SelectValue,
 } from "./ui/select";
 import { domains, surveyQuestions } from "@/constants/mapingConstants";
-import { Slider } from "./ui/slider";
 import RatingOptions from "./RatingOptions";
 import { SurveyQuestion } from "@/types";
+import { submitSurveyAction } from "@/actions";
 
 const SurveyForm = () => {
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      org: "",
-      domain: "",
-      role: "",
-      experience: "",
+      org: "wdsasdas",
+      domain: "Health Care and Social Assistance",
+      role: "asdasd",
+      experience: "1-2 years",
+      surveyQ1: "3",
+      surveyQ2: "3",
+      surveyQ3: "3",
+      surveyQ4: "1",
+      surveyQ5: "3",
+      surveyQ6: "4",
       // orgLvl: "",
       // department: "",
       // region: "",
       // country: "",
-      surveyQ1: "",
-      surveyQ2: "",
-      surveyQ3: "",
-      surveyQ4: "",
-      surveyQ5: "",
-      surveyQ6: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    let res = await submitSurveyAction(values)
+    console.log(res);
+    
   }
 
   return (
@@ -156,9 +157,7 @@ const SurveyForm = () => {
               name={question.value}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                    {question.question}
-                  </FormLabel>
+                  <FormLabel>{question.question}</FormLabel>
                   <FormControl>
                     <Select
                       onValueChange={field.onChange}

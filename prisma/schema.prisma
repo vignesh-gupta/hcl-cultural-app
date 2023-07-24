@@ -9,3 +9,18 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Survey {
+  id           String   @id @unique @default(cuid())
+  organization String
+  domain       String
+  persona      String
+  experience   String
+  surveyQ1     Int
+  surveyQ2     Int
+  surveyQ3     Int
+  surveyQ4     Int
+  surveyQ5     Int
+  surveyQ6     Int
+  createdAt    DateTime @default(now()) @updatedAt
+}
