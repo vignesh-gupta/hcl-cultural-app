@@ -1,23 +1,29 @@
 "use client";
 
 import { getSurveyAction } from "@/actions";
+import TreeMap from "@/components/charts/TreeMap";
 import { treeOptions } from "@/constants/chartConstants";
 import { treeDataMapper } from "@/mapper";
 import React, { useEffect, useState } from "react";
-import Chart from "react-apexcharts";
 
 const ResultPage = () => {
-  const [series, setSeries] = useState([{data: [{
-    x: "HCL",
-    y:0
-  }]}])
+  const [series, setSeries] = useState([
+    {
+      data: [
+        {
+          x: "HCL",
+          y: 0,
+        },
+      ],
+    },
+  ]);
 
   useEffect(() => {
     (async function () {
       let res = await getSurveyAction();
-      setSeries([{data:[...treeDataMapper(res)]}])
+      setSeries([{ data: [...treeDataMapper(res)] }]);
     })();
-  }, []);  
+  }, []);
 
   return (
     <div className="flex flex-col items-center gap-3 p-10 ">
@@ -28,14 +34,9 @@ const ResultPage = () => {
         <p className="mb-3 font-semibold text-center text-primary">
           Please find the visual of the survey results below
         </p>
-        <div className="w-full flex justify-center">
-          <Chart
-            options={treeOptions}
-            series={series}
-            type="treemap"
-            width="500"
-          />
-        </div>
+        <TreeMap options={treeOptions} series={series} />
+
+        
       </div>
     </div>
   );
