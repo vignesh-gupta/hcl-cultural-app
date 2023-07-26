@@ -11,6 +11,11 @@ export const navLinks: NavMenu[] = [
     path: "/survey/result",
     type: "link",
   },
+  {
+    name: "Sample page",
+    path: "/survey/sample",
+    type: "link",
+  },
 ];
 
 export const personalQuestions: string[] = [
