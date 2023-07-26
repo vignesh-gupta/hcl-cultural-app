@@ -52,6 +52,11 @@ const SurveyForm = () => {
     let res = await submitSurveyAction(values)
     console.log(res);
     
+    if(res.id){
+      alert("Survey Submitted Successfully")
+    }
+
+    form.reset();
   }
 
   return (
