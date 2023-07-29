@@ -155,7 +155,7 @@ const SurveyForm = () => {
             )}
           />
 
-          {surveyQuestions.map((question: SurveyQuestion, i: number) => (
+          {surveyQuestions.slice().map((question: SurveyQuestion, i: number) => (
             <FormField
               key={i}
               control={form.control}
