@@ -155,14 +155,14 @@ const SurveyForm = () => {
             )}
           />
 
-          {surveyQuestions.slice().map((question: SurveyQuestion, i: number) => (
+          {/* {[...surveyQuestions].splice(1).map((question: SurveyQuestion, i: number) => ( */}
             <FormField
-              key={i}
+              key={surveyQuestions[0].value}
               control={form.control}
-              name={question.value}
+              name={surveyQuestions[0].value}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{question.question}</FormLabel>
+                  <FormLabel>{surveyQuestions[0].question}</FormLabel>
                   <FormControl>
                     <Select
                       onValueChange={field.onChange}
@@ -178,7 +178,35 @@ const SurveyForm = () => {
                 </FormItem>
               )}
             />
-          ))}
+          {/* ))} */}
+
+          {/* Testing other ways */}
+
+          
+            <FormField
+              key={surveyQuestions[1].value}
+              control={form.control}
+              name={surveyQuestions[1].value} 
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{surveyQuestions[1].question}</FormLabel>
+                  <FormControl>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Domain" />
+                      </SelectTrigger>
+                      <RatingOptions />
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+          {/* End of testing */}
           <Button type="submit">Submit</Button>
         </form>
       </Form>
