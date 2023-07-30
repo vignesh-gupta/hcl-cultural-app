@@ -21,8 +21,8 @@ const SurveyPage = () => {
         in the beginning there are some general questions regarding you, your
         work location and role.
       </p>
-      <div className="items-center w-full py-8 mt-10 bg-white rounded-lg md:w-3/4">
-        <p className="mb-3 font-semibold text-center text-primary">
+      <div className=" items-center w-full py-8 mt-10 bg-white rounded-lg md:w-3/4">
+        <p className="mb-3 font-semibold text-center text-primary text-sm sm:text-base">
           Please submit the form below to the best of your knowledge
         </p>
         <SurveyForm />

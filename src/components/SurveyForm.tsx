@@ -24,9 +24,9 @@ import { domains, surveyQuestions } from "@/constants/mapingConstants";
 import RatingOptions from "./RatingOptions";
 import { SurveyQuestion } from "@/types";
 import { submitSurveyAction } from "@/actions";
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 
 const SurveyForm = () => {
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,11 +49,11 @@ const SurveyForm = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    let res = await submitSurveyAction(values)
+    let res = await submitSurveyAction(values);
     console.log(res);
-    
-    if(res.id){
-      alert("Survey Submitted Successfully")
+
+    if (res.id) {
+      alert("Survey Submitted Successfully");
     }
 
     form.reset();
@@ -68,7 +68,7 @@ const SurveyForm = () => {
             name="org"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>What is the name of your Organization?</FormLabel>
+                <FormLabel className="text-xs md:text-base">What is the name of your Organization?</FormLabel>
                 <FormControl>
                   <Input placeholder="HCLTECH" {...field} />
                 </FormControl>
@@ -82,7 +82,7 @@ const SurveyForm = () => {
             name="domain"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>What Domain do you work in?</FormLabel>
+                <FormLabel className="text-xs md:text-base">What Domain do you work in?</FormLabel>
                 <FormControl>
                   <Select
                     onValueChange={field.onChange}
@@ -110,7 +110,7 @@ const SurveyForm = () => {
             name="role"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>What is your persona (Job Role)?</FormLabel>
+                <FormLabel className="text-xs md:text-base">What is your persona (Job Role)?</FormLabel>
                 <FormControl>
                   <Input placeholder="HCLTECH" {...field} />
                 </FormControl>
@@ -124,7 +124,7 @@ const SurveyForm = () => {
             name="experience"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>
+                <FormLabel className="text-xs md:text-base">
                   How long have you been employed in your current role?
                 </FormLabel>
                 <FormControl>
@@ -156,55 +156,101 @@ const SurveyForm = () => {
           />
 
           {/* {[...surveyQuestions].splice(1).map((question: SurveyQuestion, i: number) => ( */}
-            <FormField
-              key={surveyQuestions[0].value}
-              control={form.control}
-              name={surveyQuestions[0].value}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{surveyQuestions[0].question}</FormLabel>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Domain" />
-                      </SelectTrigger>
-                      <RatingOptions />
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <FormField
+            key={surveyQuestions[0].value}
+            control={form.control}
+            name={surveyQuestions[0].value}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-xs md:text-base">{surveyQuestions[0].question}</FormLabel>
+                <FormControl>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Domain" />
+                    </SelectTrigger>
+                    <RatingOptions />
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           {/* ))} */}
 
           {/* Testing other ways */}
 
-          
-            <FormField
-              key={surveyQuestions[1].value}
-              control={form.control}
-              name={surveyQuestions[1].value} 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{surveyQuestions[1].question}</FormLabel>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Domain" />
-                      </SelectTrigger>
-                      <RatingOptions />
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name={surveyQuestions[2].value}
+            render={({ field }) => (
+              <FormItem className="space-y-3">
+                <FormLabel className="text-xs md:text-base">{surveyQuestions[2].question}</FormLabel>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className="flex justify-between space-y-1"
+                  >
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormLabel className="text-xs md:text-sm">Not Rigid</FormLabel>
+                    </FormItem>
+                    {[1, 2, 3, 4, 5].map((value) => (
+                      <FormItem
+                        className="flex items-center space-x-3 space-y-0"
+                        key={`${surveyQuestions[1].value}-${value}`}
+                      >
+                        <FormControl>
+                          <RadioGroupItem value={value.toString()} />
+                        </FormControl>
+                      </FormItem>
+                    ))}
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormLabel className="text-xs md:text-sm">Rigid</FormLabel>
+                    </FormItem>
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name={surveyQuestions[3].value}
+            render={({ field }) => (
+              <FormItem className="space-y-3">
+                <FormLabel className="text-xs md:text-base">{surveyQuestions[3].question}</FormLabel>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className="flex justify-between space-y-1"
+                  >
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormLabel className="text-xs md:text-sm font-normal">Not at all</FormLabel>
+                    </FormItem>
+                    {[1, 2, 3, 4, 5].map((value) => (
+                      <FormItem
+                        className="flex items-center space-x-3 space-y-0"
+                        key={`${surveyQuestions[1].value}-${value}`}
+                      >
+                        <FormControl>
+                          <RadioGroupItem value={value.toString()} />
+                        </FormControl>
+                      </FormItem>
+                    ))}
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormLabel className="text-xs md:text-sm">Supportive</FormLabel>
+                    </FormItem>
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           {/* End of testing */}
           <Button type="submit">Submit</Button>

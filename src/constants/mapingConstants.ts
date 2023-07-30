@@ -41,13 +41,11 @@ export const surveyQuestions: SurveyQuestion[] = [
     value: "surveyQ2",
   },
   {
-    question:
-      "In your organization, the policies around Gender Equality (like Equal Pay, Equal Position in Leadership, and mitigation of gender-based discriminations) are NOT robust.",
+    question: "Gender Equality ",
     value: "surveyQ3",
   },
   {
-    question:
-      "Your organization plays safe by avoiding implementation of untested NEW IDEAS, NEW INITIATIVES, and is UNWILLING to take risks for trying new things in order to maintain business-as-usual.",
+    question: "Support Innovation.",
     value: "surveyQ4",
   },
   {
