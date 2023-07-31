@@ -6,18 +6,15 @@ import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { Button } from "./ui/button";
 import MobileNav from "./MobileNav";
 
 const Navbar = () => {
   return (
     <header className="flex items-center h-16 min-w-full gap-3 px-10 py-1 border-b-2 sm:px-20">
       <Link href="/" className="grow">
-        {/* HCl */}
         <Image
           src={'/HCL-LOGO.png'}
           alt="logo"
@@ -25,7 +22,6 @@ const Navbar = () => {
           width={400}
           height={200}
           className="object-contain w-48 "
-          style={{ color: "#fff" }}
         />
       </Link>
 
