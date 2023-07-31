@@ -37,7 +37,7 @@ export const formSchema = z.object({
   surveyQ4: z.string().min(1, {
     message: "Answer must be selected from drop down.",
   }),
-  surveyQ5: z.string().min(1, {
+  surveyQ5: z.array(z.number()).min(1, {
     message: "Answer must be selected from drop down.",
   }),
   surveyQ6: z.string().min(1, {

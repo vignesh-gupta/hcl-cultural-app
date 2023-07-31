@@ -50,7 +50,7 @@ export const surveyQuestions: SurveyQuestion[] = [
   },
   {
     question:
-      "You organization engages in SHORT-TERM strategic planning over LONG-TERM, thereby prioritizing to invest in technology for reaping immediate benefits rather than LONG-TERM CAPABILITY benefits.",
+      "Timeline of Strategic Planning is",
     value: "surveyQ5",
   },
   {

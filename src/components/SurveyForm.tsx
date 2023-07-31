@@ -38,8 +38,8 @@ const SurveyForm = () => {
       surveyQ1: "3",
       surveyQ2: "3",
       surveyQ3: "3",
-      surveyQ4: "1",
-      surveyQ5: "3",
+      surveyQ4: "4",
+      surveyQ5: [3],
       surveyQ6: "4",
       // orgLvl: "",
       // department: "",
@@ -49,7 +49,7 @@ const SurveyForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    console.log(values.surveyQ4);
     let res = await submitSurveyAction(values);
     console.log(res);
 
@@ -175,7 +175,7 @@ const SurveyForm = () => {
                 <FormControl>
                   <Select
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    defaultValue={String(field.value)}
                   >
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Domain" />
@@ -202,17 +202,17 @@ const SurveyForm = () => {
                 <FormControl>
                   <RadioGroup
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    defaultValue={String(field.value)}
                     className="flex justify-between space-y-1"
                   >
-                    <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormItem className="flex items-center justify-center space-x-3 space-y-0 grow text-muted-foreground">
                       <FormLabel className="text-xs md:text-sm">
                         Not Rigid
                       </FormLabel>
                     </FormItem>
                     {[1, 2, 3, 4, 5].map((value) => (
                       <FormItem
-                        className="flex items-center space-x-3 space-y-0"
+                        className="flex items-center justify-center space-x-3 space-y-0 grow"
                         key={`${surveyQuestions[1].value}-${value}`}
                       >
                         <FormControl>
@@ -220,7 +220,7 @@ const SurveyForm = () => {
                         </FormControl>
                       </FormItem>
                     ))}
-                    <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormItem className="flex items-center justify-center space-x-3 space-y-0 grow text-muted-foreground">
                       <FormLabel className="text-xs md:text-sm">
                         Rigid
                       </FormLabel>
@@ -243,17 +243,17 @@ const SurveyForm = () => {
                 <FormControl>
                   <RadioGroup
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    defaultValue={String(field.value)}
                     className="flex justify-between space-y-1"
                   >
-                    <FormItem className="flex items-center space-x-3 space-y-0">
-                      <FormLabel className="text-xs md:text-sm font-normal">
+                    <FormItem className="flex items-center justify-center space-x-3 space-y-0 grow text-muted-foreground">
+                      <FormLabel className="text-xs font-normal md:text-sm">
                         Not at all
                       </FormLabel>
                     </FormItem>
                     {[1, 2, 3, 4, 5].map((value) => (
                       <FormItem
-                        className="flex items-center space-x-3 space-y-0"
+                        className="flex items-center justify-center space-x-3 space-y-0 grow"
                         key={`${surveyQuestions[1].value}-${value}`}
                       >
                         <FormControl>
@@ -261,7 +261,7 @@ const SurveyForm = () => {
                         </FormControl>
                       </FormItem>
                     ))}
-                    <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormItem className="flex items-center justify-center space-x-3 space-y-0 grow text-muted-foreground">
                       <FormLabel className="text-xs md:text-sm">
                         Supportive
                       </FormLabel>
@@ -273,7 +273,37 @@ const SurveyForm = () => {
             )}
           />
 
-          <Slider  defaultValue={[33]} max={5} step={1} />
+          <FormField
+            control={form.control}
+            name={surveyQuestions[4].value}
+            render={({ field }) => (
+              <FormItem className="space-y-3">
+                <FormLabel className="text-xs md:text-base">
+                  {surveyQuestions[4].question}
+                </FormLabel>
+                <div className="flex gap-2">
+                  <FormItem className="flex items-center justify-center space-x-3 space-y-0 grow text-muted-foreground">
+                    <FormLabel className="text-xs font-normal md:text-sm">
+                      SHORT Term
+                    </FormLabel>
+                  </FormItem>
+                  <Slider
+                    defaultValue={[Number(field.value)]}
+                    onValueChange={field.onChange}
+                    min={1}
+                    max={5}
+                    step={1}
+                  />
+                  <FormItem className="flex items-center justify-center space-x-3 space-y-0 grow text-muted-foreground">
+                    <FormLabel className="text-xs font-normal md:text-sm">
+                      LONG Term
+                    </FormLabel>
+                  </FormItem>
+                </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           {/* End of testing */}
           <Button type="submit">Submit</Button>
