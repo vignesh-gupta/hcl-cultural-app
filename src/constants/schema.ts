@@ -25,22 +25,22 @@ export const formSchema = z.object({
   // country: z.string().min(8, {
   //   message: "Country must be selected from drop down.",
   // }),
-  surveyQ1: z.string().min(1, {
+  surveyQ1: z.number().min(1, {
     message: "Answer must be selected from drop down.",
   }),
-  surveyQ2: z.string().min(1, {
+  surveyQ2: z.number().min(1, {
     message: "Answer must be selected from drop down.",
   }),
-  surveyQ3: z.string().min(1, {
+  surveyQ3: z.number().min(1, {
     message: "Answer must be selected from drop down.",
   }),
-  surveyQ4: z.string().min(1, {
+  surveyQ4: z.number().min(1, {
     message: "Answer must be selected from drop down.",
   }),
-  surveyQ5: z.array(z.number()).min(1, {
+  surveyQ5: z.number().min(1, {
     message: "Answer must be selected from drop down.",
   }),
-  surveyQ6: z.string().min(1, {
+  surveyQ6: z.number().min(1, {
     message: "Answer must be selected from drop down.",
   }),
 });

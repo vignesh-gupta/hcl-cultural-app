@@ -35,12 +35,12 @@ const SurveyForm = () => {
       domain: "Health Care and Social Assistance",
       role: "SDE",
       experience: "1-2 years",
-      surveyQ1: "3",
-      surveyQ2: "3",
-      surveyQ3: "3",
-      surveyQ4: "4",
-      surveyQ5: [5],
-      surveyQ6: "4",
+      surveyQ1: 3,
+      surveyQ2: 3,
+      surveyQ3: 3,
+      surveyQ4: 4,
+      surveyQ5: 1,
+      surveyQ6: 4,
       // orgLvl: "",
       // department: "",
       // region: "",
@@ -163,59 +163,6 @@ const SurveyForm = () => {
           />
 
           {/* {[...surveyQuestions].splice(1).map((question: SurveyQuestion, i: number) => ( */}
-          {/* ))} */}
-
-          {/* Testing other ways */}
-
-          <FormField
-            control={form.control}
-            name={surveyQuestions[3].value}
-            render={({ field }) => (
-              <FormItem className="space-y-3">
-                <FormLabel className="text-xs md:text-base">
-                  {surveyQuestions[3].question}
-                </FormLabel>
-                <FormControl>
-                  <RadioGroup
-                    onValueChange={field.onChange}
-                    defaultValue={String(field.value)}
-                    className="flex flex-col justify-between space-y-1"
-                  >
-                    <div className="flex justify-between grow">
-                      <FormItem className="flex items-center space-x-3 space-y-0 grow text-muted-foreground">
-                        <FormLabel className="text-xs font-normal md:text-sm">
-                          Not at all
-                        </FormLabel>
-                      </FormItem>
-                      <FormItem className="items-center justify-center hidden space-x-3 space-y-0 sm:flex grow text-muted-foreground">
-                        <FormLabel className="text-xs md:text-sm">
-                          Somewhat
-                        </FormLabel>
-                      </FormItem>
-                      <FormItem className="flex items-center justify-end space-x-3 space-y-0 grow text-muted-foreground">
-                        <FormLabel className="text-xs md:text-sm">
-                          Supportive
-                        </FormLabel>
-                      </FormItem>
-                    </div>
-                    <div className="flex justify-between px-2">
-                      {[1, 2, 3, 4, 5].map((value) => (
-                        <FormItem
-                          className="flex items-center justify-center space-x-3 space-y-0 grow"
-                          key={`${surveyQuestions[1].value}-${value}`}
-                        >
-                          <FormControl>
-                            <RadioGroupItem value={value.toString()} />
-                          </FormControl>
-                        </FormItem>
-                      ))}
-                    </div>
-                  </RadioGroup>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
 
           <FormField
             control={form.control}
@@ -232,7 +179,7 @@ const SurveyForm = () => {
                     </FormLabel>
                   </FormItem>
                   <Slider
-                    defaultValue={[Number(field.value[0])]}
+                    defaultValue={[Number(field.value)]}
                     onValueChange={field.onChange}
                     min={1}
                     max={5}
@@ -249,7 +196,8 @@ const SurveyForm = () => {
             )}
           />
 
-          {/* End of testing */}
+          {/* ))} */}
+
           <Button type="submit">Submit</Button>
         </form>
       </Form>
