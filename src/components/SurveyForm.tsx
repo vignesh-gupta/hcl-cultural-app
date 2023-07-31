@@ -25,6 +25,7 @@ import RatingOptions from "./RatingOptions";
 import { SurveyQuestion } from "@/types";
 import { submitSurveyAction } from "@/actions";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { Slider } from "./ui/slider";
 
 const SurveyForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -68,7 +69,9 @@ const SurveyForm = () => {
             name="org"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs md:text-base">What is the name of your Organization?</FormLabel>
+                <FormLabel className="text-xs md:text-base">
+                  What is the name of your Organization?
+                </FormLabel>
                 <FormControl>
                   <Input placeholder="HCLTECH" {...field} />
                 </FormControl>
@@ -82,7 +85,9 @@ const SurveyForm = () => {
             name="domain"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs md:text-base">What Domain do you work in?</FormLabel>
+                <FormLabel className="text-xs md:text-base">
+                  What Domain do you work in?
+                </FormLabel>
                 <FormControl>
                   <Select
                     onValueChange={field.onChange}
@@ -110,7 +115,9 @@ const SurveyForm = () => {
             name="role"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs md:text-base">What is your persona (Job Role)?</FormLabel>
+                <FormLabel className="text-xs md:text-base">
+                  What is your persona (Job Role)?
+                </FormLabel>
                 <FormControl>
                   <Input placeholder="HCLTECH" {...field} />
                 </FormControl>
@@ -162,7 +169,9 @@ const SurveyForm = () => {
             name={surveyQuestions[0].value}
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs md:text-base">{surveyQuestions[0].question}</FormLabel>
+                <FormLabel className="text-xs md:text-base">
+                  {surveyQuestions[0].question}
+                </FormLabel>
                 <FormControl>
                   <Select
                     onValueChange={field.onChange}
@@ -187,7 +196,9 @@ const SurveyForm = () => {
             name={surveyQuestions[2].value}
             render={({ field }) => (
               <FormItem className="space-y-3">
-                <FormLabel className="text-xs md:text-base">{surveyQuestions[2].question}</FormLabel>
+                <FormLabel className="text-xs md:text-base">
+                  {surveyQuestions[2].question}
+                </FormLabel>
                 <FormControl>
                   <RadioGroup
                     onValueChange={field.onChange}
@@ -195,7 +206,9 @@ const SurveyForm = () => {
                     className="flex justify-between space-y-1"
                   >
                     <FormItem className="flex items-center space-x-3 space-y-0">
-                      <FormLabel className="text-xs md:text-sm">Not Rigid</FormLabel>
+                      <FormLabel className="text-xs md:text-sm">
+                        Not Rigid
+                      </FormLabel>
                     </FormItem>
                     {[1, 2, 3, 4, 5].map((value) => (
                       <FormItem
@@ -208,7 +221,9 @@ const SurveyForm = () => {
                       </FormItem>
                     ))}
                     <FormItem className="flex items-center space-x-3 space-y-0">
-                      <FormLabel className="text-xs md:text-sm">Rigid</FormLabel>
+                      <FormLabel className="text-xs md:text-sm">
+                        Rigid
+                      </FormLabel>
                     </FormItem>
                   </RadioGroup>
                 </FormControl>
@@ -222,7 +237,9 @@ const SurveyForm = () => {
             name={surveyQuestions[3].value}
             render={({ field }) => (
               <FormItem className="space-y-3">
-                <FormLabel className="text-xs md:text-base">{surveyQuestions[3].question}</FormLabel>
+                <FormLabel className="text-xs md:text-base">
+                  {surveyQuestions[3].question}
+                </FormLabel>
                 <FormControl>
                   <RadioGroup
                     onValueChange={field.onChange}
@@ -230,7 +247,9 @@ const SurveyForm = () => {
                     className="flex justify-between space-y-1"
                   >
                     <FormItem className="flex items-center space-x-3 space-y-0">
-                      <FormLabel className="text-xs md:text-sm font-normal">Not at all</FormLabel>
+                      <FormLabel className="text-xs md:text-sm font-normal">
+                        Not at all
+                      </FormLabel>
                     </FormItem>
                     {[1, 2, 3, 4, 5].map((value) => (
                       <FormItem
@@ -243,7 +262,9 @@ const SurveyForm = () => {
                       </FormItem>
                     ))}
                     <FormItem className="flex items-center space-x-3 space-y-0">
-                      <FormLabel className="text-xs md:text-sm">Supportive</FormLabel>
+                      <FormLabel className="text-xs md:text-sm">
+                        Supportive
+                      </FormLabel>
                     </FormItem>
                   </RadioGroup>
                 </FormControl>
@@ -251,6 +272,8 @@ const SurveyForm = () => {
               </FormItem>
             )}
           />
+
+          <Slider  defaultValue={[33]} max={5} step={1} />
 
           {/* End of testing */}
           <Button type="submit">Submit</Button>
