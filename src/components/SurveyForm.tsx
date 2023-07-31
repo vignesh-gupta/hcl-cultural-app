@@ -39,7 +39,7 @@ const SurveyForm = () => {
       surveyQ2: "3",
       surveyQ3: "3",
       surveyQ4: "4",
-      surveyQ5: [3],
+      surveyQ5: [5],
       surveyQ6: "4",
       // orgLvl: "",
       // department: "",
@@ -288,7 +288,7 @@ const SurveyForm = () => {
                     </FormLabel>
                   </FormItem>
                   <Slider
-                    defaultValue={[Number(field.value)]}
+                    defaultValue={[Number(field.value[0])]}
                     onValueChange={field.onChange}
                     min={1}
                     max={5}
