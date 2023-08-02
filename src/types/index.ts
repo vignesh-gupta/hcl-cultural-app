@@ -2,6 +2,7 @@
 export type NavLink = {
     name: string;
     path: string;
+    type: 'link';
 }
 
 type NavCategory =  {

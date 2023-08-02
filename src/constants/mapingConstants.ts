@@ -4,14 +4,17 @@ export const navLinks: NavLink[] = [
   {
     name: "Home",
     path: "/survey",
+    type: "link",
   },
   {
     name: "Cultural Data",
     path: "/survey/result",
+    type: "link",
   },
   {
     name: "Sample page",
     path: "/survey/sample",
+    type: "link",
   },
 ];
 
