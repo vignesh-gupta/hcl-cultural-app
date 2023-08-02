@@ -191,7 +191,6 @@ const SurveyForm = () => {
                       </FormItem>
                     </div>
                     <Slider
-                      className="px-4"
                       defaultValue={[Number(field.value)]}
                       onValueChange={field.onChange}
                       min={1}
