@@ -21,14 +21,17 @@ import {
   SelectValue,
 } from "./ui/select";
 import { domains, surveyQuestions } from "@/constants/mapingConstants";
-import RatingOptions from "./RatingOptions";
 import { SurveyQuestion } from "@/types";
 import { submitSurveyAction } from "@/actions";
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Slider } from "./ui/slider";
 import Loading from "./Loading";
 
-const SurveyForm = () => {
+type IProp = {
+  isFormSubmitted: boolean,
+  setIsFormSubmitted : React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const SurveyForm = ({isFormSubmitted, setIsFormSubmitted} : IProp ) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -50,12 +53,15 @@ const SurveyForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values.surveyQ4);
+    console.log(values);
     let res = await submitSurveyAction(values);
     console.log(res);
 
-    if (res.id) {
-      alert("Survey Submitted Successfully");
+    if (form.formState.isSubmitted) {      
+      setIsFormSubmitted(true);
+      localStorage?.setItem("isFormSubmitted", "true");
+    }else{
+      alert("Something went wrong, please try again")
     }
 
     form.reset();
