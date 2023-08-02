@@ -19,7 +19,7 @@ function NavigationMenuBar() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        {navLinks.filter(link => link.type === 'link').map((link) => (
+        {navLinks.map((link) => (
           <NavigationMenuItem key={link.name}>
             <Link href={link.path || ""} legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -28,25 +28,6 @@ function NavigationMenuBar() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
-        ))}
-
-        {navLinks.filter(category => category.type === 'category').map((category) => (
-          <NavigationMenuItem key={category.name}>
-          <NavigationMenuTrigger>{category.name}</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {category.subCategory?.map((component) => (
-                <ListItem
-                  key={component.name}
-                  title={component.name}
-                  href={component.path}
-                >
-                  {component.path}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
         ))}
         
       </NavigationMenuList>
