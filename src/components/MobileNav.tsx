@@ -14,28 +14,13 @@ const MobileNav = () => {
   return (
     <Accordion type="single" collapsible className="w-full">
       {navLinks.map((nav, i) => (
-        <AccordionItem value={`item-${i}`} key={nav.name}>
-          {nav.type === "link" ? (
+        <AccordionItem value={`item-${i}`} key={nav.name}>  
             <Link
               href="/docs"
               className="flex py-4 text-sm font-medium hover:underline"
             >
               {nav.name}
             </Link>
-          ) : (
-            <>
-              <AccordionTrigger className="hover:no-underline">
-                {nav.name}
-              </AccordionTrigger>
-              {nav.subCategory?.map((subNav, i) => (
-                <AccordionContent key={subNav.name}>
-                  <Link href={subNav.path || "/"} className="hover:underline">
-                    {subNav.name}
-                  </Link>
-                </AccordionContent>
-              ))}
-            </>
-          )}
         </AccordionItem>
       ))}
     </Accordion>
