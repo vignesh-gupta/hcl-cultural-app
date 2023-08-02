@@ -31,32 +31,58 @@ export const personalQuestions: string[] = [
 
 export const surveyQuestions: SurveyQuestion[] = [
   {
-    question:
-      "Your organization follows a strict Chain of Command, hence DISCOURAGES independent decision making while trying new things in response to changing situations, and is resistant to feedbacks.",
+    question: "Strict Chain of Command",
     value: "surveyQ1",
+    label : {
+      min: "Strongly Disagree",
+      mid: "Neutral",
+      max: "Strongly Agree"
+    }
   },
   {
-    question:
-      "Goals, Objectives, and Modus Operandi for the organization are CENTRALIZED, and Supervisors are not encouraged to provide feedback informally.",
+    question: "Sticks to Hierarchy.",
     value: "surveyQ2",
+    label : {
+      min: "Strongly Disagree",
+      mid: "Neutral",
+      max: "Strongly Agree"
+    }
   },
   {
     question: "Gender Equality ",
     value: "surveyQ3",
+    label : {
+      min: "Strongly Disagree",
+      mid: "Neutral",
+      max: "Strongly Agree"
+    }
   },
   {
     question: "Support Innovation.",
     value: "surveyQ4",
+    label : {
+      min: "Strongly Disagree",
+      mid: "Neutral",
+      max: "Strongly Agree"
+    }
   },
   {
-    question:
-      "Timeline of Strategic Planning is",
+    question: "Timeline of Strategic Planning is",
     value: "surveyQ5",
+    label : {
+      min: "Strongly Disagree",
+      mid: "Neutral",
+      max: "Strongly Agree"
+    }
   },
   {
-    question:
-      "Your organization VALUES adherence job duties over importance of freedom, socialization, rewards & recognitions, and having an open-door policy to question managers / business leaders on modus-operandi.",
+    question: "Rewards innovation",
     value: "surveyQ6",
+    label : {
+      min: "Strongly Disagree",
+      mid: "Neutral",
+      max: "Strongly Agree"
+    }
   },
 ];
 

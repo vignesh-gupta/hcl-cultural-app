@@ -39,7 +39,7 @@ const SurveyForm = () => {
       surveyQ2: 3,
       surveyQ3: 3,
       surveyQ4: 4,
-      surveyQ5: 1,
+      surveyQ5: 3,
       surveyQ6: 4,
       // orgLvl: "",
       // department: "",
@@ -162,41 +162,47 @@ const SurveyForm = () => {
             )}
           />
 
-          {/* {[...surveyQuestions].splice(1).map((question: SurveyQuestion, i: number) => ( */}
-
-          <FormField
-            control={form.control}
-            name={surveyQuestions[4].value}
-            render={({ field }) => (
-              <FormItem className="space-y-3">
-                <FormLabel className="text-xs md:text-base">
-                  {surveyQuestions[4].question}
-                </FormLabel>
-                <div className="flex gap-2">
-                  <FormItem className="flex items-center justify-center space-x-3 space-y-0 grow text-muted-foreground">
-                    <FormLabel className="text-xs font-normal md:text-sm">
-                      SHORT Term
-                    </FormLabel>
-                  </FormItem>
-                  <Slider
-                    defaultValue={[Number(field.value)]}
-                    onValueChange={field.onChange}
-                    min={1}
-                    max={5}
-                    step={1}
-                  />
-                  <FormItem className="flex items-center justify-center space-x-3 space-y-0 grow text-muted-foreground">
-                    <FormLabel className="text-xs font-normal md:text-sm">
-                      LONG Term
-                    </FormLabel>
-                  </FormItem>
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* ))} */}
+          {surveyQuestions.map((question: SurveyQuestion, i: number) => (
+            <FormField
+              control={form.control}
+              key={question.value}
+              name={question.value}
+              render={({ field }) => (
+                <FormItem className="space-y-3">
+                  <FormLabel className="text-xs md:text-base">
+                    {question.question}
+                  </FormLabel>
+                  <div className="flex flex-col gap-2">
+                    <div className="grid grid-cols-2  sm:grid-cols-3  gap-4">
+                      <FormItem className="flex items-center space-x-3 space-y-0 text-muted-foreground">
+                        <FormLabel className="text-xs font-normal md:text-sm">
+                          {question.label.min}
+                        </FormLabel>
+                      </FormItem>
+                      <FormItem className="hidden sm:flex items-center justify-center space-x-3 space-y-0 text-muted-foreground">
+                        <FormLabel className="text-xs font-normal md:text-sm">
+                          {question.label.mid}
+                        </FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center justify-end space-x-3 space-y-0 text-muted-foreground">
+                        <FormLabel className="text-xs font-normal md:text-sm">
+                          {question.label.max}
+                        </FormLabel>
+                      </FormItem>
+                    </div>
+                    <Slider
+                      className="px-4"
+                      defaultValue={[Number(field.value)]}
+                      onValueChange={field.onChange}
+                      min={1}
+                      max={5}
+                    />
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
 
           <Button type="submit">Submit</Button>
         </form>
