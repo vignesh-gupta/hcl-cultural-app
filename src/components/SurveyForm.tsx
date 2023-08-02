@@ -26,6 +26,7 @@ import { SurveyQuestion } from "@/types";
 import { submitSurveyAction } from "@/actions";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Slider } from "./ui/slider";
+import Loading from "./Loading";
 
 const SurveyForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -35,12 +36,12 @@ const SurveyForm = () => {
       domain: "Health Care and Social Assistance",
       role: "SDE",
       experience: "1-2 years",
-      surveyQ1: 3,
-      surveyQ2: 3,
-      surveyQ3: 3,
-      surveyQ4: 4,
-      surveyQ5: 3,
-      surveyQ6: 4,
+      surveyQ1: [3],
+      surveyQ2: [3],
+      surveyQ3: [3],
+      surveyQ4: [4],
+      surveyQ5: [3],
+      surveyQ6: [4],
       // orgLvl: "",
       // department: "",
       // region: "",
@@ -173,13 +174,13 @@ const SurveyForm = () => {
                     {question.question}
                   </FormLabel>
                   <div className="flex flex-col gap-2">
-                    <div className="grid grid-cols-2  sm:grid-cols-3  gap-4">
+                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                       <FormItem className="flex items-center space-x-3 space-y-0 text-muted-foreground">
                         <FormLabel className="text-xs font-normal md:text-sm">
                           {question.label.min}
                         </FormLabel>
                       </FormItem>
-                      <FormItem className="hidden sm:flex items-center justify-center space-x-3 space-y-0 text-muted-foreground">
+                      <FormItem className="items-center justify-center hidden space-x-3 space-y-0 sm:flex text-muted-foreground">
                         <FormLabel className="text-xs font-normal md:text-sm">
                           {question.label.mid}
                         </FormLabel>
@@ -191,7 +192,7 @@ const SurveyForm = () => {
                       </FormItem>
                     </div>
                     <Slider
-                      defaultValue={[Number(field.value)]}
+                      defaultValue={[Number(field.value[0])]}
                       onValueChange={field.onChange}
                       min={1}
                       max={5}
@@ -203,7 +204,7 @@ const SurveyForm = () => {
             />
           ))}
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit">{form.formState.isSubmitting? <Loading />: "Submit"}</Button>
         </form>
       </Form>
     </div>
