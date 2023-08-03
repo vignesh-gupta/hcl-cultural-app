@@ -27,11 +27,10 @@ import { Slider } from "./ui/slider";
 import Loading from "./Loading";
 
 type IProp = {
-  isFormSubmitted: boolean,
-  setIsFormSubmitted : React.Dispatch<React.SetStateAction<boolean>>
-}
+  setIsFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-const SurveyForm = ({isFormSubmitted, setIsFormSubmitted} : IProp ) => {
+const SurveyForm = ({ setIsFormSubmitted }: IProp) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -57,11 +56,11 @@ const SurveyForm = ({isFormSubmitted, setIsFormSubmitted} : IProp ) => {
     let res = await submitSurveyAction(values);
     console.log(res);
 
-    if (form.formState.isSubmitted) {      
+    if (form.formState.isSubmitted) {
       setIsFormSubmitted(true);
       localStorage?.setItem("isFormSubmitted", "true");
-    }else{
-      alert("Something went wrong, please try again")
+    } else {
+      alert("Something went wrong, please try again");
     }
 
     form.reset();
@@ -210,7 +209,9 @@ const SurveyForm = ({isFormSubmitted, setIsFormSubmitted} : IProp ) => {
             />
           ))}
 
-          <Button type="submit">{form.formState.isSubmitting? <Loading />: "Submit"}</Button>
+          <Button type="submit" disabled={form.formState.isSubmitting}>
+            {form.formState.isSubmitting ? <Loading /> : "Submit"}
+          </Button>
         </form>
       </Form>
     </div>
