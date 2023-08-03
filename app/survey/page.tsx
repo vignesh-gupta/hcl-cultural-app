@@ -2,7 +2,7 @@
 
 import SubmittedForm from "@/components/SubmittedForm";
 import SurveyForm from "@/components/SurveyForm";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const SurveyPage = () => {
   const [isFormSubmitted, setIsFormSubmitted] = useState(

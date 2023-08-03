@@ -25,12 +25,16 @@ import { SurveyQuestion } from "@/types";
 import { submitSurveyAction } from "@/actions";
 import { Slider } from "./ui/slider";
 import Loading from "./Loading";
+import { useToast } from "./ui/use-toast";
 
 type IProp = {
   setIsFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const SurveyForm = ({ setIsFormSubmitted }: IProp) => {
+
+  const { toast } = useToast()
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -59,8 +63,15 @@ const SurveyForm = ({ setIsFormSubmitted }: IProp) => {
     if (form.formState.isSubmitted) {
       setIsFormSubmitted(true);
       localStorage?.setItem("isFormSubmitted", "true");
+      toast({
+        title: "Submitted Successfully!",
+        color: "hsl(--primary)"
+      })
     } else {
-      alert("Something went wrong, please try again");
+      toast({
+        title: "Something went wrong, please try again!",
+        variant: "destructive"
+      })
     }
 
     form.reset();

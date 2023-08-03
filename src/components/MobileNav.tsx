@@ -16,7 +16,7 @@ const MobileNav = () => {
       {navLinks.map((nav, i) => (
         <AccordionItem value={`item-${i}`} key={nav.name}>  
             <Link
-              href="/docs"
+              href={nav.path}
               className="flex py-4 text-sm font-medium hover:underline"
             >
               {nav.name}
