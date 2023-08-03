@@ -11,17 +11,19 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "HCLTECH's Cultural Data Platform",
-  description: "An application to collect data about company culture from employees anonymously",
+  description:
+    "An application to collect data about company culture from employees anonymously",
   authors: {
     name: "Vignesh Gupta",
-    url: "http://vigneshgupta.netlify.app/"
+    url: "http://vigneshgupta.netlify.app/",
   },
   openGraph: {
     type: "website",
     title: "HCLTECH's Cultural Data Platform",
-    description: "An application to collect data about company culture from employees anonymously",
+    description:
+      "An application to collect data about company culture from employees anonymously",
     url: "https://hcltech-culture.vercel.app/",
-    images: [ 'https://hcl-cultural-app.vercel.app/HCL-LOGO.png']
+    images: "https://hcl-cultural-app.vercel.app/HCL-LOGO.png",
   },
 };
 
