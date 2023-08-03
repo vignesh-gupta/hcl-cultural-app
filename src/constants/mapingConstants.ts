@@ -3,6 +3,11 @@ import { NavLink, SurveyQuestion } from "@/types";
 export const navLinks: NavLink[] = [
   {
     name: "Home",
+    path: "/",
+    type: "link",
+  },
+  {
+    name: "Survey",
     path: "/survey",
     type: "link",
   },

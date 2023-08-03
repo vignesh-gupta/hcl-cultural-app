@@ -5,10 +5,10 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="flex flex-col items-center min-h-screen gap-3 p-6 sm:p-12 md:p-24">
-      <h1 className="text-lg font-bold text-center md:text-2xl text-foreground">
-        Welcome to HCL&apos;s Cultural Data Platform
+      <h1 className="text-lg font-bold text-center text-white md:text-2xl">
+        Welcome to HCLTECH&apos;s Cultural Data Platform
       </h1>
-      <p className="max-w-5xl text-sm text-center text-foreground md:text-lg">
+      <p className="max-w-5xl text-sm text-center text-white md:text-lg">
         This is an organizational survey that is asking some questions regarding
         your organizational environment. It is asking you to consider your
         colleagues, team members, leaders and senior leadership around you when
