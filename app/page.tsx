@@ -4,11 +4,11 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between max-h-screen p-24">
-      <h1 className="text-2xl font-bold text-white">
+    <main className="flex flex-col items-center min-h-screen gap-3 p-6 sm:p-12 md:p-24">
+      <h1 className="text-lg font-bold text-center md:text-2xl text-foreground">
         Welcome to HCL&apos;s Cultural Data Platform
       </h1>
-      <p className="max-w-5xl text-center text-white md:text-lg">
+      <p className="max-w-5xl text-sm text-center text-foreground md:text-lg">
         This is an organizational survey that is asking some questions regarding
         your organizational environment. It is asking you to consider your
         colleagues, team members, leaders and senior leadership around you when
@@ -21,7 +21,7 @@ export default function Home() {
         work location and role.
       </p>
 
-      <Button variant={"secondary"} className="mt-3 text-primary">
+      <Button className="mt-3 bg-background text-foreground">
         <Link href="/survey" className="flex items-center gap-2">Get Started <ChevronRight /> </Link>
       </Button>
     </main>
