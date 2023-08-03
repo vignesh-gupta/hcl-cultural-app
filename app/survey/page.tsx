@@ -5,9 +5,10 @@ import SurveyForm from "@/components/SurveyForm";
 import React, { useState } from "react";
 
 const SurveyPage = () => {
-  const [isFormSubmitted, setIsFormSubmitted] = useState(
-    Boolean(localStorage?.getItem("isFormSubmitted")) ?? false
-  );
+  // const [isFormSubmitted, setIsFormSubmitted] = useState(
+  //   Boolean(localStorage?.getItem("isFormSubmitted") || false)  
+  // );
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   return (
     <div className="flex flex-col items-center gap-3 p-10 ">

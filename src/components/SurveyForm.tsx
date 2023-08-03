@@ -60,7 +60,7 @@ const SurveyForm = ({ setIsFormSubmitted }: IProp) => {
     let res = await submitSurveyAction(values);
     console.log(res);
 
-    if (form.formState.isSubmitted) {
+    if (res?.id) {
       setIsFormSubmitted(true);
       localStorage?.setItem("isFormSubmitted", "true");
       toast({

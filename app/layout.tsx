@@ -23,8 +23,9 @@ export const metadata: Metadata = {
     description:
       "An application to collect data about company culture from employees anonymously",
     url: "https://hcltech-culture.vercel.app/",
-    images: "https://hcl-cultural-app.vercel.app/HCL-LOGO.png",
+    images: "/HCL-LOGO.png",
   },
+  creator: 'Vignesh Gupta',
 };
 
 export default function RootLayout({

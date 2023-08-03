@@ -21,7 +21,7 @@ export default function Home() {
         work location and role.
       </p>
 
-      <Button className="mt-3 bg-background text-foreground">
+      <Button variant={'secondary'} className="mt-3 bg-background text-foreground">
         <Link href="/survey" className="flex items-center gap-2">Get Started <ChevronRight /> </Link>
       </Button>
     </main>
